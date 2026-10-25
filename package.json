@@ -1,0 +1,21 @@
+
+{
+  "name": "aeogen",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "dependencies": {
+    "cookie-session": "^2.1.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.17.0"
+  },
+  "devDependencies": {
+    "vercel": "^41.7.0"
+  }
+}
