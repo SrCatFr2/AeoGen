@@ -1,0 +1,165 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090d">
+  <title>AeoGen — Generator Hub</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="/">
+        <span class="brand-icon">A</span>
+        <span>Aeo<span class="accent">Gen</span></span>
+      </a>
+
+      <p class="nav-label">WORKSPACE</p>
+      <a class="nav-item active" href="#dashboard">◈ &nbsp; Dashboard</a>
+      <a class="nav-item" href="#platforms">▦ &nbsp; Platforms</a>
+      <a class="nav-item" href="#admin">⚙ &nbsp; Administration</a>
+
+      <div class="sidebar-bottom">
+        <div class="server-status">
+          <span class="dot"></span>
+          <span>Discord access enabled</span>
+        </div>
+        <a id="join-link" class="join-link" href="#" target="_blank"
+           rel="noopener noreferrer">Join Discord ↗</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">GENERATOR HUB</p>
+          <h1 id="page-title">Dashboard</h1>
+        </div>
+        <div class="user-area">
+          <span id="user-label" class="user-label">Not signed in</span>
+          <button id="logout" class="button button-ghost hidden">
+            Log out
+          </button>
+        </div>
+      </header>
+
+      <section id="login-view" class="login-panel">
+        <div class="login-glow"></div>
+        <div class="login-content">
+          <div class="hero-icon">✳</div>
+          <p class="eyebrow">YOUR PRIVATE WORKSPACE</p>
+          <h2>Welcome to <span class="accent">AeoGen</span></h2>
+          <p class="muted">
+            A clean workspace for your authorized test platforms.
+            Access is restricted to members of our Discord server.
+          </p>
+          <a class="button button-primary" href="/api/auth/login">
+            <span>◈</span> Continue with Discord
+          </a>
+          <p id="login-message" class="muted small"></p>
+        </div>
+      </section>
+
+      <div id="app-view" class="hidden">
+        <section id="dashboard" class="welcome">
+          <div>
+            <p class="eyebrow">OVERVIEW</p>
+            <h2>Your workspace, <span class="accent">simplified.</span></h2>
+            <p class="muted">Manage your platforms and test inventory.</p>
+          </div>
+          <div class="welcome-symbol">A<span>.</span></div>
+        </section>
+
+        <section class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">Platforms</span>
+              <span class="stat-icon">▦</span>
+            </div>
+            <div id="platform-count" class="stat-value">—</div>
+            <p class="muted small">Active platforms</p>
+          </article>
+          <article class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">Available stock</span>
+              <span class="stat-icon">◈</span>
+            </div>
+            <div id="stock-count" class="stat-value">—</div>
+            <p class="muted small">Synthetic test entries</p>
+          </article>
+        </section>
+
+        <section id="platforms" class="section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">YOUR COLLECTION</p>
+              <h2>Platforms</h2>
+            </div>
+            <button id="refresh" class="button button-ghost">↻ Refresh</button>
+          </div>
+          <div id="platform-list" class="platform-grid"></div>
+          <p id="empty-state" class="empty-state hidden">
+            No platforms yet. Create your first one below.
+          </p>
+        </section>
+
+        <section id="admin" class="section admin-section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">CONTROL CENTER</p>
+              <h2>Platform management</h2>
+            </div>
+            <span class="admin-tag">ADMIN</span>
+          </div>
+
+          <form id="create-form" class="admin-form">
+            <label>
+              Platform name
+              <input id="platform-name" maxlength="60"
+                     placeholder="My test platform" required>
+            </label>
+            <label>
+              Description
+              <input id="platform-description" maxlength="200"
+                     placeholder="Optional description">
+            </label>
+            <button class="button button-primary" type="submit">
+              + Create platform
+            </button>
+          </form>
+
+          <div class="import-panel">
+            <h3>Import test inventory</h3>
+            <p class="muted small">
+              Select a platform and a TXT file. Each line must begin with
+              TEST: and contain synthetic test data only.
+            </p>
+            <label>
+              Target platform
+              <select id="import-platform" required>
+                <option value="">Select a platform</option>
+              </select>
+            </label>
+            <label class="file-picker">
+              <span>Choose a TXT file</span>
+              <input id="import-file" type="file" accept=".txt,text/plain">
+            </label>
+            <button id="import-button" class="button button-secondary">
+              Import inventory
+            </button>
+          </div>
+          <p id="admin-message" class="message" role="status"></p>
+        </section>
+      </div>
+
+      <footer>
+        <span>AeoGen <span class="accent">●</span></span>
+        <span>Private workspace · Authorized test data</span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
